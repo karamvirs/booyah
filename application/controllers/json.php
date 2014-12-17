@@ -1063,6 +1063,7 @@ class Json extends CI_Controller {
 	
 	protected function profilepic($imgdata) { 
 		//pr($_FILES);die;
+		$this->falseResponse('There was an error in the file.');
 		$user_id			= $imgdata->user_id;			
 		if(!empty($_FILES["userfile"]["name"])){ 
 			$filename 		= time()."_".$_FILES["userfile"]["name"];
