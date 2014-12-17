@@ -324,10 +324,12 @@ class Json extends CI_Controller {
 			} else {
 				$searchdata['channeldata'] = array();
 			}
-			$this->trueResponse($searchdata,'success',$encode = true);  
+			
 		} else {
-			$this->falseResponse('No result found'); 
+			$searchdata['channeldata'] = array();
+			//$this->falseResponse('No result found'); 
 		}
+		$this->trueResponse($searchdata,'success',$encode = true);  
 	}
 	/*
 	// function searchPostAction
