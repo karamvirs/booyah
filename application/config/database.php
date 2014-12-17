@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'booyah';
+$db['default']['hostname'] = 'aakh4bngew05e0.cgbbtdcicrpp.us-west-2.rds.amazonaws.com';
+$db['default']['username'] = 'booyah';
+$db['default']['password'] = 'booyah#$%^';
+$db['default']['database'] = 'ebdb';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
