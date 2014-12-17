@@ -1063,7 +1063,7 @@ class Json extends CI_Controller {
 	
 	protected function profilepic($imgdata) { 
 		//pr($_FILES);die;
-		$this->falseResponse('There was an error in the file.');
+		//$this->falseResponse('There was an error in the file.');
 		$user_id			= $imgdata->user_id;			
 		if(!empty($_FILES["userfile"]["name"])){ 
 			$filename 		= time()."_".$_FILES["userfile"]["name"];
@@ -1083,7 +1083,9 @@ class Json extends CI_Controller {
 						} else {
 							$this->falseResponse('Please try again');
 						} 		
-					}
+					} else {
+							$this->falseResponse('File upload error');
+						} 
 				} else {
 					$this->falseResponse('Please use .jpeg or .png image.');
 				}
