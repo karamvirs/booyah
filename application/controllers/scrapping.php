@@ -377,6 +377,56 @@ class Scrapping extends CI_Controller{
 			
 			
 		}
+		
+		
+		/*
+		 * function for cron to fill the data in every 10 min for trending 
+		*/
+		protected function trendingdata() {
+			$this->db->truncate('postrank'); 
+			$allposts 		= $this->app_model->getRedditPosts();// get all posts from reddit with in 48 hours
+			$gravity		= array();
+			$i=0;
+			for($i;$i<=48;$i++){
+				$gravity[$i]= $i/10;	
+			}
+			$j=0;
+			foreach($allposts as $post){
+				$score 			= $post['score'];
+				$created_time  	= $post['created_time'];
+				$score  		= $post['score'];
+				$created_time 	= strtotime($post['created_time']);
+				$currenttime 	= strtotime(date('Y-m-d H:i:s'));			
+				$diff 			= $created_time - $currenttime;
+				$time	 		= date('H', $diff);// out =integer between 0-48
+				
+				$stats 			= "SELECT likecount from appstats where reddit_id = '".$post['name']."'";		
+				$query 			= $this->db->query($stats);
+				if ($query->num_rows() > 0) {
+					$postviewcount	= $query->row_array();
+					$applike		= $postviewcount['likecount'];
+				} else {
+					$applike 		= 0;
+				}
+				
+				$finalrank = ($score-1)/($time+2)^$gravity[$time] + ($applike)/($time+2)^$gravity[$time];//trending formula
+				$postarry[$j]['reddit_id'] 	= $post['name'];
+				$postarry[$j]['post_id'] 	= $post['id'];
+				$postarry[$j]['rank'] 		= $finalrank;
+				$j++;
+			}
+			$sorted_data 		= $this->orderBy($postarry, 'rank');
+			
+			foreach($sorted_data as $pdata){ 
+				$this->db->insert('postrank', $pdata);
+			}
+		}
+		
+		function orderBy($data, $field){
+			$code = "return strnatcmp(\$b['$field'], \$a['$field']);";
+			usort($data, create_function('$a,$b', $code));
+			return $data;
+		}
 		function dates(){
 			$data = $this->reddit_model->twoDaysBacks();
 			echo "<pre>";print_r($data);echo "</pre>";die;

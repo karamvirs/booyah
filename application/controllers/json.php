@@ -1213,7 +1213,7 @@ class Json extends CI_Controller {
 	/*
 	 * function for cron to fill the data in every 10 min for trending 
 	*/
-	protected function trendingdata($data) {
+	/*protected function trendingdata($data) {
 		$this->db->truncate('postrank'); 
 		$allposts 		= $this->app_model->getRedditPosts();// get all posts from reddit with in 48 hours
 		$gravity		= array();
@@ -1257,7 +1257,7 @@ class Json extends CI_Controller {
 		$code = "return strnatcmp(\$b['$field'], \$a['$field']);";
 		usort($data, create_function('$a,$b', $code));
 		return $data;
-	}
+	}*/
 	
 	protected function trending($data) {
 		$user_id 		= $data->user_id; 
