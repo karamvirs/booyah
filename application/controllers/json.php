@@ -884,7 +884,9 @@ class Json extends CI_Controller {
 			$this->trueResponse($gifs,'success', $encode = true);
 		} else {
 			$gifs['usergifdatas'] 	= array();
-			$this->falseResponse('Sorry you have no follower.');
+			if($pid==''){
+				$this->falseResponse('Sorry you have no follower.');
+			}
 		}
 		
 	}
