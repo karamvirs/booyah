@@ -369,16 +369,11 @@ class Scrapping extends CI_Controller{
 			
 			$data = $this->reddit_model->twoDaysBack();
 			foreach($data as $p){
-				print_r($p);die;
 					$postdata	= json_decode(file_get_contents('http://www.reddit.com'.$p->permalink.'.json'));
 					$dcore 	= $postdata[0]->data->children[0]->data->score;
 					$name 	= $postdata[0]->data->children[0]->data->name;
-					if($this->reddit_model->updatescore($name, $dcore)){
-						echo "updated";
-						echo $deore; die;
-						}
+					$this->reddit_model->updatescore($name, $dcore);
 					sleep(2);
-					
 			}
 			
 			
