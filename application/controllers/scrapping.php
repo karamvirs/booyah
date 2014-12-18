@@ -379,7 +379,7 @@ class Scrapping extends CI_Controller{
 			
 		}
 		
-		
+		 
 		/*
 		 * function for cron to fill the data in every 10 min for trending 
 		*/

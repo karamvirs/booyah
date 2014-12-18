@@ -145,7 +145,7 @@ class Reddit_model extends CI_Model {
 	function redditInsertOld($data) {
         $this->db->insert('reddit_old', $data);
         //echo $this->db->last_query();
-        return true;
+        return true; 
     }
 	function twoDaysBack() {
         $this->db->select('*')->from('reddit');
