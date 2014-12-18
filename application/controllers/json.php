@@ -1330,7 +1330,7 @@ class Json extends CI_Controller {
 		}
 	}
 }
-/*******************************/
+/**************END OF FILE*****************/
 
 	if (!function_exists('pr')) {
 		function pr($a) {
