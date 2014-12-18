@@ -406,7 +406,7 @@ class Scrapping extends CI_Controller{
 				$created_time  	= $post['created_time'];
 				$score  		= $post['score'];
 				$created_time 	= strtotime($post['created_time']);
-				$currenttime 	= strtotime(date('Y-m-d H:i:s'));			
+				$currenttime 	= strtotime(date('Y-m-d H:i:s'));		 	
 				$diff 			= $created_time - $currenttime;
 				$time	 		= date('H', $diff);// out =integer between 0-48
 				
