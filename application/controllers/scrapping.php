@@ -415,7 +415,7 @@ class Scrapping extends CI_Controller{
 					$postviewcount	= $query->row_array();
 					$applike		= $postviewcount['likecount'];
 				} else {
-					$applike 		= 0;
+					$applike 		= 0; 
 				}
 				
 				$finalrank = ($score-1)/($time+2)^$gravity[$time] + ($applike)/($time+2)^$gravity[$time];//trending formula
