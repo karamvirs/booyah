@@ -196,7 +196,7 @@ class Reddit_model extends CI_Model {
 		$this->db->update('reddit', $data); 		
     }
     
-
+ 
 /*
  * 			
  * */
