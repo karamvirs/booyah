@@ -200,7 +200,7 @@ class Scrapping extends CI_Controller{
 			$headers = 'From: Booyah' . "\r\n" .
 			'Reply-To: webmaster@example.com' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion(); 
-			mail($to, $subject, $message, $headers);
+			//mail($to, $subject, $message, $headers);
 			
 			$allSubreddit = $this->scrap_model->allSubredditDataNew();
 			//echo "<pre>";print_r($allSubreddit); echo "</pre>";die("asd");
@@ -365,7 +365,7 @@ class Scrapping extends CI_Controller{
 			$headers = 'From: Booyah' . "\r\n" .
 			'Reply-To: webmaster@example.com' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
-			mail($to, $subject, $message, $headers);	//die;
+			//mail($to, $subject, $message, $headers);	//die;
 			
 			$data = $this->reddit_model->twoDaysBack();
 			foreach($data as $p){
@@ -383,14 +383,15 @@ class Scrapping extends CI_Controller{
 		/*
 		 * function for cron to fill the data in every 10 min for trending 
 		*/
-		protected function trendingdata() { die("we are sorry");
-			$to      = 'susheel1688@gmail.com';
+		function trendingdata() { 
+			error_reporting(0);
+			$to      = 'susheel1688@gmail.com'; 
 			$subject = 'the subject';
 			$message = 'trending cron job initiated';
 			$headers = 'From: Booyah' . "\r\n" .
 			'Reply-To: webmaster@example.com' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
-			mail($to, $subject, $message, $headers);	//die;
+			//mail($to, $subject, $message, $headers);	//die;
 			
 			$this->db->truncate('postrank'); 
 			$allposts 		= $this->app_model->getRedditPosts();// get all posts from reddit with in 48 hours
@@ -429,6 +430,7 @@ class Scrapping extends CI_Controller{
 			foreach($sorted_data as $pdata){ 
 				$this->db->insert('postrank', $pdata);
 			}
+			error_reporting(E_ALL);
 		}
 		
 		function orderBy($data, $field){
