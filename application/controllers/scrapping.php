@@ -383,7 +383,7 @@ class Scrapping extends CI_Controller{
 		/*
 		 * function for cron to fill the data in every 10 min for trending 
 		*/
-		protected function trendingdata() {
+		protected function trendingdata() { die("we are sorry");
 			$to      = 'susheel1688@gmail.com';
 			$subject = 'the subject';
 			$message = 'trending cron job initiated';
