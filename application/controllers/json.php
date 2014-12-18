@@ -1328,16 +1328,9 @@ class Json extends CI_Controller {
 		} else {
 			$this->falseResponse('No result found');  
 		}
-		
-		
-		
 	}
-	
-	
-
-	
 }
-
+/*******************************/
 
 	if (!function_exists('pr')) {
 		function pr($a) {
