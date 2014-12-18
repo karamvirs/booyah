@@ -1328,7 +1328,7 @@ class Json extends CI_Controller {
 		} else {
 			$this->falseResponse('No result found');  
 		}
-	}
+	} 
 }
 /**************END OF FILE  *****************/
 

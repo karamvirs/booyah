@@ -148,7 +148,7 @@ class Reddit_model extends CI_Model {
         return true;
     }
 	function twoDaysBack() {
-        $this->db->select('*')->from('reddit_test');
+        $this->db->select('*')->from('reddit');
 		$start 		= date('Y-m-d H:i:s');//today        
         $dend		= date("Y-m-d H:i:s",strtotime("-2 day", strtotime($start)));        
 		$this->db->where("created_time BETWEEN '".$dend."' AND '".$start."'");
@@ -193,7 +193,7 @@ class Reddit_model extends CI_Model {
                'score' => $score
             );
 		$this->db->where('name', $name);
-		$this->db->update('reddit_test', $data); 		
+		$this->db->update('reddit', $data); 		
     }
     
 
