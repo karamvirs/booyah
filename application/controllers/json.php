@@ -21,8 +21,9 @@ class Json extends CI_Controller {
        /*echo "<pre>";
        print_r($_REQUEST);
        print_r($_FILES);
-       echo "</pre>";
-       die;*/
+       echo "</pre>";*/
+       //$this->falseResponse($_FILES);
+       //die;
 		$this->load->database();
 		$this->load->model('app_model');
         error_reporting(E_ERROR | E_PARSE);
@@ -720,8 +721,8 @@ class Json extends CI_Controller {
 				$fileurl 		= base_url()."templates/uploads/user_gifs/".$filename;
 				$temp 			= explode(".", $_FILES["userfile"]["name"]);
 				if ($_FILES["userfile"]["error"] > 0) {
-					$this->falseResponse('There was an error in the file.');
-				} else {  
+					$this->falseResponse($_FILES["userfile"]["error"].'There was an error in the file.');
+				} else {
 					if(move_uploaded_file($_FILES["userfile"]["tmp_name"], "templates/uploads/user_gifs/".$filename)){
 						$exts = pathinfo($fileurl, PATHINFO_EXTENSION);
 						if((!empty($fileurl)) && ($exts=='gif')){
@@ -771,7 +772,9 @@ class Json extends CI_Controller {
 								$this->falseResponse('There is problem with gif');
 							}	
 						}
-					}
+					} else{
+								$this->falseResponse('else part');
+							}	
 					
 				}
 				
