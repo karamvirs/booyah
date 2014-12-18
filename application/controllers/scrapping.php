@@ -372,8 +372,12 @@ class Scrapping extends CI_Controller{
 					$postdata	= json_decode(file_get_contents('http://www.reddit.com'.$p->permalink.'.json'));
 					$dcore 	= $postdata[0]->data->children[0]->data->score;
 					$name 	= $postdata[0]->data->children[0]->data->name;
-					$this->reddit_model->updatescore($name, $dcore);
+					if($this->reddit_model->updatescore($name, $dcore)){
+						echo "updated";
+						echo $deore; die;
+						}
 					sleep(2);
+					
 			}
 			
 			
