@@ -8,6 +8,7 @@ class Scrapping extends CI_Controller{
 			$this->load->library('session');
 			$this->load->model('reddit_model');		 
 			$this->load->model('scrap_model');		 
+			$this->load->model('app_model');		 
 		}
 		/*
 		 *	This function will scrap the www.reddit.com/r/gifs https://web.archive.org fro 
