@@ -22,7 +22,6 @@ class Json extends CI_Controller {
        print_r($_REQUEST);
        print_r($_FILES);
        echo "</pre>";*/
-       //$this->falseResponse($_FILES);
        //die;
 		$this->load->database();
 		$this->load->model('app_model');
