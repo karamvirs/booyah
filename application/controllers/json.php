@@ -913,7 +913,7 @@ class Json extends CI_Controller {
 				//$result = $this->db->insert('users', $data);
 				//$last_inserted_id = $this->db->insert_id();
 				$i++;
-			}
+			} 
 			
 		} else{
 			$this->falseResponse('Sorry you have no follower.');
